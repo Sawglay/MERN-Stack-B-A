@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "lodash": "^4.18.1"
+  },
+  "name": "mern-stack-b-a",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sawglay/MERN-Stack-B-A.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Sawglay/MERN-Stack-B-A/issues"
+  },
+  "homepage": "https://github.com/Sawglay/MERN-Stack-B-A#readme"
+}
