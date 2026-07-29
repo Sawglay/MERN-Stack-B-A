@@ -13,3 +13,8 @@ app.get('/about', (req, res) => {
 app.get('/contact', (req, res) => {
   res.send('<h1>Contact</h1>')
 })
+
+app.listen(3000, () =>{
+    console.log('app is running on port 3000');
+    
+})
