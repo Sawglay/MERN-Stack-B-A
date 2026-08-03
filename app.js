@@ -7,11 +7,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-  res.send('<h1>About</h1>')
+  res.sendFile('./cleanServer/about.html', { root: __dirname })
 })
 
 app.get('/contact', (req, res) => {
-  res.send('<h1>Contact</h1>')
+  res.sendFile('./cleanServer/contact.html', { root: __dirname })
 })
 
 app.listen(3000, () => {
