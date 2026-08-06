@@ -1,17 +1,23 @@
 const express = require('express')
 
 const app = express()
+app.set('views', './views')
+app.set('view engine','ejs')
 
-app.get('/', (req, res) => {
-  res.sendFile('./cleanServer/home.html', { root: __dirname })
+// app.get('/', (req, res) => {
+//   res.sendFile('./cleanServer/home.html', { root: __dirname })
+// })
+
+app.get('/', (req, res) =>{
+  res.render('home')
 })
 
-app.get('/about', (req, res) => {
-  res.sendFile('./cleanServer/about.html', { root: __dirname })
+app.get('/contact', (req, res) =>{
+  res.render('contact')
 })
 
-app.get('/contact', (req, res) => {
-  res.sendFile('./cleanServer/contact.html', { root: __dirname })
+app.get('/about', (req, res) =>{
+  res.render('about')
 })
 
 //Redirect
@@ -22,8 +28,7 @@ app.get('/contact-us', (req, res) => {
 //404 Page
 //Express, Route with Order is important
 app.use((req, res) => {
-  res.status(404);
-  res.sendFile('./cleanServer/404.html', { root: __dirname })
+  res.status(404).render('404')
 })
 
 app.listen(3000, () => {
