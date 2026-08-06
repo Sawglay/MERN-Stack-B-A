@@ -20,6 +20,7 @@ app.get('/contact-us', (req, res) => {
 })
 
 //404 Page
+//Express, Route with Order is important
 app.use((req, res) => {
   res.status(404);
   res.sendFile('./cleanServer/404.html', { root: __dirname })
