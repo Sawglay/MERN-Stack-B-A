@@ -14,6 +14,17 @@ app.get('/contact', (req, res) => {
   res.sendFile('./cleanServer/contact.html', { root: __dirname })
 })
 
+//Redirect
+app.get('/contact-us', (req, res) => {
+  res.redirect('contact')
+})
+
+//404 Page
+app.use((req, res) => {
+  res.status(404);
+  res.sendFile('./cleanServer/404.html', { root: __dirname })
+})
+
 app.listen(3000, () => {
   console.log('app is running on port 3000');
 
