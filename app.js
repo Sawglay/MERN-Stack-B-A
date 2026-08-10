@@ -10,7 +10,8 @@ app.set('view engine','ejs')
 
 app.get('/', (req, res) =>{
   res.render('home', {
-    name : "G Lay"
+    name : "G Lay",
+    age : 23
   })
 })
 
