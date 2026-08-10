@@ -18,8 +18,8 @@ app.set('view engine','ejs')
 app.get('/', (req,res) =>{
   let blogs = [
     {title : 'Blog Title 1', intro : 'This is blog intro 1'},
-    {title : 'Blog Title 1', intro : 'This is blog intro 1'},
-    {title : 'Blog Title 1', intro : 'This is blog intro 1'}
+    {title : 'Blog Title 2', intro : 'This is blog intro 2'},
+    {title : 'Blog Title 3', intro : 'This is blog intro 3'}
   ];
 
   res.render('home',{
