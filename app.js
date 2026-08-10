@@ -8,12 +8,24 @@ app.set('view engine','ejs')
 //   res.sendFile('./cleanServer/home.html', { root: __dirname })
 // })
 
-app.get('/', (req, res) =>{
-  res.render('home', {
-    name : "G Lay",
-    age : 23
+// app.get('/', (req, res) =>{
+//   res.render('home', {
+//     name : "G Lay",
+//     age : 23
+//   })
+// })
+
+app.get('/', (req,res) =>{
+  let blogs = [
+    {title : 'Blog Title 1', intro : 'This is blog intro 1'},
+    {title : 'Blog Title 1', intro : 'This is blog intro 1'},
+    {title : 'Blog Title 1', intro : 'This is blog intro 1'}
+  ];
+
+  res.render('home',{
+    blogs : blogs,
   })
-})
+});
 
 app.get('/contact', (req, res) =>{
   res.render('contact')
