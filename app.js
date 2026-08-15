@@ -24,15 +24,20 @@ app.get('/', (req,res) =>{
 
   res.render('home',{
     blogs : blogs,
+    title : 'Home'
   })
 });
 
 app.get('/contact', (req, res) =>{
-  res.render('contact')
+  res.render('contact', {
+    title : 'Contact'
+  })
 })
 
 app.get('/about', (req, res) =>{
-  res.render('about')
+  res.render('about', {
+    title : 'About'
+  })
 })
 
 //Redirect
@@ -43,7 +48,9 @@ app.get('/contact-us', (req, res) => {
 //404 Page
 //Express, Route with Order is important
 app.use((req, res) => {
-  res.status(404).render('404')
+  res.status(404).render('404',{
+    title : '404 not found'
+  })
 })
 
 app.listen(3000, () => {
