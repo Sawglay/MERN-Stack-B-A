@@ -15,6 +15,11 @@ app.set('view engine','ejs')
 //   })
 // })
 
+app.use((req,res,next) =>{
+  console.log('First Middleware is running');
+  next();
+})
+
 app.get('/', (req,res) =>{
   let blogs = [
     {title : 'Blog Title 1', intro : 'This is blog intro 1'},
