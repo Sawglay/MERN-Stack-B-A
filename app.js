@@ -1,4 +1,5 @@
 const express = require('express')
+let morgan = require('morgan')
 
 const app = express()
 app.set('views', './views')
@@ -15,10 +16,18 @@ app.set('view engine','ejs')
 //   })
 // })
 
-app.use((req,res,next) =>{
-  console.log(`${req.method} ${req.originalUrl} --`);
-  next();
-})
+//logging
+// app.use((req,res,next) =>{
+//   console.log(`${req.method} ${req.originalUrl} --`);
+//   next();
+// })
+
+// let logger = (req,res,next) =>{
+//    console.log(`${req.method} ${req.originalUrl} --`);
+//    next();
+//  }
+
+app.use(morgan('dev'))
 
 app.get('/', (req,res) =>{
   let blogs = [
