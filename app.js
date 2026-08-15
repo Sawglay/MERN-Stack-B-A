@@ -16,7 +16,7 @@ app.set('view engine','ejs')
 // })
 
 app.use((req,res,next) =>{
-  console.log('First Middleware is running');
+  console.log(`${req.method} ${req.originalUrl} --`);
   next();
 })
 
