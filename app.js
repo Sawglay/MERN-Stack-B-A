@@ -29,6 +29,7 @@ app.set('view engine','ejs')
 
 app.use(morgan('dev'))
 app.use(express.static('public'))
+let mongoURL = "";
 
 app.get('/', (req,res) =>{
   let blogs = [
