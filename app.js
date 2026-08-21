@@ -22,10 +22,10 @@ app.set('view engine','ejs')
 //   next();
 // })
 
-// let logger = (req,res,next) =>{
-//    console.log(`${req.method} ${req.originalUrl} --`);
-//    next();
-//  }
+let logger = (req,res,next) =>{
+   console.log(`${req.method} ${req.originalUrl} --`);
+   next();
+ }
 
 app.use(morgan('dev'))
 app.use(express.static('public'))
