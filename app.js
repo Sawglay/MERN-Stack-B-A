@@ -1,6 +1,7 @@
 const express = require('express')
 let morgan = require('morgan')
 
+const mongoose = require('mongoose');
 const app = express()
 app.set('views', './views')
 app.set('view engine','ejs')
@@ -29,7 +30,7 @@ app.set('view engine','ejs')
 
 app.use(morgan('dev'))
 app.use(express.static('public'))
-let mongoURL = "";
+let mongoURL = "mongodb+srv://sawglay2_db_user:Hmh77001@cluster0.stuhbwx.mongodb.net/?appName=Cluster0";
 
 app.get('/', (req,res) =>{
   let blogs = [
