@@ -31,6 +31,14 @@ app.set('view engine','ejs')
 app.use(morgan('dev'))
 app.use(express.static('public'))
 let mongoURL = "mongodb+srv://sawglay2_db_user:Hmh77001@cluster0.stuhbwx.mongodb.net/?appName=Cluster0";
+mongoose.connect(mongoURL).then(()=>{
+  console.log('Connected to db')
+  app.listen(3000, () => {
+    console.log('App is running on port3000');
+    
+  });
+  
+})
 
 app.get('/', (req,res) =>{
   let blogs = [
