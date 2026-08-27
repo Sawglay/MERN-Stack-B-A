@@ -30,6 +30,7 @@ app.set('view engine','ejs')
 
 app.use(morgan('dev'))
 app.use(express.static('public'))
+//With every setup finished for example, if database setup finished, the server should respond
 let mongoURL = "mongodb+srv://sawglay2_db_user:Hmh77001@cluster0.stuhbwx.mongodb.net/?appName=Cluster0";
 mongoose.connect(mongoURL).then(()=>{
   console.log('Connected to db')
@@ -78,7 +79,7 @@ app.use((req, res) => {
   })
 })
 
-app.listen(3000, () => {
-  console.log('app is running on port 3000');
+// app.listen(3000, () => {
+//   console.log('app is running on port 3000');
 
-})
+// })
