@@ -32,14 +32,15 @@ app.set('view engine','ejs')
 app.use(morgan('dev'))
 app.use(express.static('public'))
 
-app.get('/add-blog',() => {
+app.get('/add-blog',async (req, res) => {
   let blog = new Blog({
     title : "blog title 1",
     intro : 'blog intro 1',
     body : "blog body 1"
   });
 
-  blog.save();
+  await blog.save(); //await -> async
+  res.send('blog saved')
 } )
 //With every setup finished for example, if database setup finished, the server should respond
 let mongoURL = "mongodb+srv://sawglay2_db_user:Hmh77001@cluster0.stuhbwx.mongodb.net/?appName=Cluster0";
