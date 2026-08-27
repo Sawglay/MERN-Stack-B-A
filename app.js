@@ -35,7 +35,7 @@ let mongoURL = "mongodb+srv://sawglay2_db_user:Hmh77001@cluster0.stuhbwx.mongodb
 mongoose.connect(mongoURL).then(()=>{
   console.log('Connected to db')
   app.listen(3000, () => {
-    console.log('App is running on port3000');
+    console.log('App is running on port 3000');
     
   });
   
