@@ -2,6 +2,7 @@ const express = require('express')
 let morgan = require('morgan')
 
 const mongoose = require('mongoose');
+const Blog = require('./models/Blog')
 const app = express()
 app.set('views', './views')
 app.set('view engine','ejs')
@@ -30,6 +31,16 @@ app.set('view engine','ejs')
 
 app.use(morgan('dev'))
 app.use(express.static('public'))
+
+app.get('/add-blog',() => {
+  let blog = new Blog({
+    title : "blog title 1",
+    intro : 'blog intro 1',
+    body : "blog body 1"
+  });
+
+  blog.save();
+} )
 //With every setup finished for example, if database setup finished, the server should respond
 let mongoURL = "mongodb+srv://sawglay2_db_user:Hmh77001@cluster0.stuhbwx.mongodb.net/?appName=Cluster0";
 mongoose.connect(mongoURL).then(()=>{
