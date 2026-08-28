@@ -53,12 +53,14 @@ mongoose.connect(mongoURL).then(()=>{
   
 })
 
-app.get('/', (req,res) =>{
-  let blogs = [
-    {title : 'Blog Title 1', intro : 'This is blog intro 1'},
-    {title : 'Blog Title 2', intro : 'This is blog intro 2'},
-    {title : 'Blog Title 3', intro : 'This is blog intro 3'}
-  ];
+app.get('/', async (req,res) =>{
+  // let blogs = [
+  //   {title : 'Blog Title 1', intro : 'This is blog intro 1'},
+  //   {title : 'Blog Title 2', intro : 'This is blog intro 2'},
+  //   {title : 'Blog Title 3', intro : 'This is blog intro 3'}
+  // ];
+  let blogs = await Blog.find();
+    console.log(blogs)
 
   res.render('home',{
     blogs : blogs,
