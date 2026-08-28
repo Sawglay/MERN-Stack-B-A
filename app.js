@@ -34,9 +34,9 @@ app.use(express.static('public'))
 
 app.get('/add-blog',async (req, res) => {
   let blog = new Blog({
-    title : "blog title 1",
-    intro : 'blog intro 1',
-    body : "blog body 1"
+    title : "blog title 3",
+    intro : 'blog intro 3',
+    body : "blog body 3"
   });
 
   await blog.save(); //await -> async
@@ -59,7 +59,7 @@ app.get('/', async (req,res) =>{
   //   {title : 'Blog Title 2', intro : 'This is blog intro 2'},
   //   {title : 'Blog Title 3', intro : 'This is blog intro 3'}
   // ];
-  let blogs = await Blog.find();
+  let blogs = await Blog.find().sort({createdAt :-1});
     console.log(blogs)
 
   res.render('home',{
