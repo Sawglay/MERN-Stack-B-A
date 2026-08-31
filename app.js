@@ -42,6 +42,13 @@ app.get('/add-blog',async (req, res) => {
   await blog.save(); //await -> async
   res.send('blog saved')
 } )
+
+app.get('/single-blog',async (req, res) => {
+
+  let blog = await findById(); 
+  res.json(blog)
+} )
+
 //With every setup finished for example, if database setup finished, the server should respond
 let mongoURL = "mongodb+srv://sawglay2_db_user:Hmh77001@cluster0.stuhbwx.mongodb.net/?appName=Cluster0";
 mongoose.connect(mongoURL).then(()=>{
