@@ -45,7 +45,7 @@ app.get('/add-blog',async (req, res) => {
 
 app.get('/single-blog',async (req, res) => {
 
-  let blog = await findById(); 
+  let blog = await Blog.findById('6a95b09809443b3d8240dbc8'); 
   res.json(blog)
 } )
 
