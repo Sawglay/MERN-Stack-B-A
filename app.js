@@ -2,6 +2,7 @@ const express = require('express')
 let morgan = require('morgan')
 
 const mongoose = require('mongoose');
+var = express
 const Blog = require('./models/Blog')
 const app = express()
 app.set('views', './views')
