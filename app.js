@@ -2,12 +2,15 @@ const express = require('express')
 let morgan = require('morgan')
 
 const mongoose = require('mongoose');
-var = express
+const expressLayouts = require('express-ejs-layouts')
+
 const Blog = require('./models/Blog')
 const app = express()
 app.set('views', './views')
 app.set('view engine','ejs')
 
+app.use('expressLayouts')
+app.set('layout', 'layouts/default')
 // app.get('/', (req, res) => {
 //   res.sendFile('./cleanServer/home.html', { root: __dirname })
 // })
