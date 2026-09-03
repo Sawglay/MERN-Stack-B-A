@@ -92,6 +92,12 @@ app.get('/about', (req, res) =>{
   })
 })
 
+app.get('/blogs/create', (req, res) =>{
+  res.render('blogs/create', {
+    title : 'Blog Create'
+  })
+})
+
 //Redirect
 app.get('/contact-us', (req, res) => {
   res.redirect('contact')
