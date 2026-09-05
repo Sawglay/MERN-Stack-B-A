@@ -38,3 +38,10 @@ nav a :hover {
 .blog-card {
   margin: 20px 0;
 }
+
+.blog form {
+  max-width: 800px;
+  margin: auto;
+  border: 1px solid lightgreen;
+  padding: 40px;
+}
