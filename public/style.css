@@ -57,3 +57,20 @@ nav a :hover {
 .form-group label{
   font-size: 18px;
 }
+
+.form-group input,
+.form-group textarea {
+  width: 100px;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid green;
+}
+
+.blog-create-btn{
+  background-color: green;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 1px solid green;
+  color: white;
+}
