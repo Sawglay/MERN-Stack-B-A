@@ -1,16 +1,16 @@
-const express = require('express')
-let morgan = require('morgan')
+const express = require("express");
+let morgan = require("morgan");
 
-const mongoose = require('mongoose');
-const expressLayouts = require('express-ejs-layouts')
+const mongoose = require("mongoose");
+const expressLayouts = require("express-ejs-layouts");
 
-const Blog = require('./models/Blog')
-const app = express()
-app.set('views', './views')
-app.set('view engine','ejs')
+const Blog = require("./models/Blog");
+const app = express();
+app.set("views", "./views");
+app.set("view engine", "ejs");
 
-app.use(expressLayouts)
-app.set('layout', 'layouts/defaults')
+app.use(expressLayouts);
+app.set("layout", "layouts/defaults");
 
 // app.get('/', (req, res) => {
 //   res.sendFile('./cleanServer/home.html', { root: __dirname })
@@ -34,82 +34,84 @@ app.set('layout', 'layouts/defaults')
 //    next();
 //  }
 
-app.use(morgan('dev'))
-app.use(express.static('public'))
+app.use(morgan("dev"));
+app.use(express.static("public"));
 
-app.get('/add-blog',async (req, res) => {
+app.get("/add-blog", async (req, res) => {
   let blog = new Blog({
-    title : "blog title 3",
-    intro : 'blog intro 3',
-    body : "blog body 3"
+    title: "blog title 3",
+    intro: "blog intro 3",
+    body: "blog body 3",
   });
 
   await blog.save(); //await -> async
-  res.send('blog saved')
-} )
+  res.send("blog saved");
+});
 
-app.get('/single-blog',async (req, res) => {
-
-  let blog = await Blog.findById('6a95b09809443b3d8240dbc8'); 
-  res.json(blog)
-} )
+app.get("/single-blog", async (req, res) => {
+  let blog = await Blog.findById("6a95b09809443b3d8240dbc8");
+  res.json(blog);
+});
 
 //With every setup finished for example, if database setup finished, the server should respond
-let mongoURL = "mongodb+srv://sawglay2_db_user:Hmh77001@cluster0.stuhbwx.mongodb.net/?appName=Cluster0";
-mongoose.connect(mongoURL).then(()=>{
-  console.log('Connected to db')
+let mongoURL =
+  "mongodb+srv://sawglay2_db_user:Hmh77001@cluster0.stuhbwx.mongodb.net/?appName=Cluster0";
+mongoose.connect(mongoURL).then(() => {
+  console.log("Connected to db");
   app.listen(3000, () => {
-    console.log('App is running on port 3000');
-    
+    console.log("App is running on port 3000");
   });
-  
-})
+});
 
-app.get('/', async (req,res) =>{
+app.get("/", async (req, res) => {
   // let blogs = [
   //   {title : 'Blog Title 1', intro : 'This is blog intro 1'},
   //   {title : 'Blog Title 2', intro : 'This is blog intro 2'},
   //   {title : 'Blog Title 3', intro : 'This is blog intro 3'}
   // ];
-  let blogs = await Blog.find().sort({createdAt :-1});
-    console.log(blogs)
+  let blogs = await Blog.find().sort({ createdAt: -1 });
+  console.log(blogs);
 
-  res.render('home',{
-    blogs : blogs,
-    title : 'Home'
-  })
+  res.render("home", {
+    blogs: blogs,
+    title: "Home",
+  });
 });
 
-app.get('/contact', (req, res) =>{
-  res.render('contact', {
-    title : 'Contact'
-  })
-})
+app.post("/blogs", async (req, res) => {
+  console.log("hit post api route");
+});
 
-app.get('/about', (req, res) =>{
-  res.render('about', {
-    title : 'About'
-  })
-})
+app.get("/contact", (req, res) => {
+  res.render("contact", {
+    title: "Contact",
+  });
+});
 
-app.get('/blogs/create', (req, res) =>{
-  res.render('blogs/create', {
-    title : 'Blog Create'
-  })
-})
+app.get("/about", (req, res) => {
+  res.render("about", {
+    title: "About",
+  });
+});
+
+app.get("/blogs/create", (req, res) => {
+  res.render("blogs/create", {
+    title: "Blog Create",
+  });
+});
 
 //Redirect
-app.get('/contact-us', (req, res) => {
-  res.redirect('contact')
-})
+app.get("/contact-us", (req, res) => {
+  res.redirect("contact");
+});
 
 //404 Page
 //Express, Route with Order is important
 app.use((req, res) => {
-  res.status(404).render('404',{
-    title : '404 not found'
-  })
-})
+  res.status(404).render("404", {
+    title: "404 not found",
+  });
+});
 
 // app.listen(3000, () => {
 //   console.log('app is running on port 3000');
