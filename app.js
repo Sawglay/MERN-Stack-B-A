@@ -6,8 +6,11 @@ const expressLayouts = require("express-ejs-layouts");
 
 const Blog = require("./models/Blog");
 const app = express();
-app.set("views", "./views");
-app.set("view engine", "ejs");
+
+app.use(express.urlencoded({extended:true}))
+
+app.set("views", "./views"); //middleware
+app.set("view engine", "ejs"); //middleware
 
 app.use(expressLayouts);
 app.set("layout", "layouts/defaults");
@@ -79,7 +82,7 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/blogs", async (req, res) => {
-  console.log("hit post api route");
+  console.log(req.body );
 });
 
 app.get("/contact", (req, res) => {
