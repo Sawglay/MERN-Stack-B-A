@@ -82,7 +82,17 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/blogs", async (req, res) => {
-  console.log(req.body );
+  let {title, intro, body} = req.body;
+
+  let blog = new Blog({
+    title,
+    intro,
+    body
+  })
+
+  await blog.save();
+
+  res.redirect('/');
 });
 
 app.get("/contact", (req, res) => {
