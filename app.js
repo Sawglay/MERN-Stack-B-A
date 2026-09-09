@@ -51,10 +51,14 @@ app.get("/add-blog", async (req, res) => {
   res.send("blog saved");
 });
 
-app.get("/single-blog", async (req, res) => {
+app.get('/single-blog', async (req, res) => {
   let blog = await Blog.findById("6a95b09809443b3d8240dbc8");
-  res.json(blog);
-});
+  // res.json(blog);
+  res.render('blogs/show',{
+  blog,
+  title : 'Blog details',
+  })
+  });
 
 //With every setup finished for example, if database setup finished, the server should respond
 let mongoURL =
