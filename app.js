@@ -51,16 +51,6 @@ app.get("/add-blog", async (req, res) => {
   res.send("blog saved");
 });
 
-app.get('/blogs/:id', async (req, res) => {
-  let id = req.params.id;
-  let blog = await Blog.findById("6a95b09809443b3d8240dbc8");
-  // res.json(blog);
-  res.render('blogs/show',{
-  blog,
-  title : 'Blog details',
-  })
-  });
-
 //With every setup finished for example, if database setup finished, the server should respond
 let mongoURL =
   "mongodb+srv://sawglay2_db_user:Hmh77001@cluster0.stuhbwx.mongodb.net/?appName=Cluster0";
@@ -117,6 +107,16 @@ app.get("/blogs/create", (req, res) => {
     title: "Blog Create",
   });
 });
+
+app.get('/blogs/:id', async (req, res) => {
+  let id = req.params.id;
+  let blog = await Blog.findById("6a95b09809443b3d8240dbc8");
+  // res.json(blog);
+  res.render('blogs/show',{
+  blog,
+  title : 'Blog details',
+  })
+  });
 
 //Redirect
 app.get("/contact-us", (req, res) => {
