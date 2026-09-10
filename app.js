@@ -7,7 +7,7 @@ const expressLayouts = require("express-ejs-layouts");
 const Blog = require("./models/Blog");
 const app = express();
 
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
 app.set("views", "./views"); //middleware
 app.set("view engine", "ejs"); //middleware
@@ -82,12 +82,12 @@ app.post("/blogs", async (req, res) => {
   let blog = new Blog({
     title,
     intro,
-    body
-  })
+    body,
+  });
 
   await blog.save();
 
-  res.redirect('/');
+  res.redirect("/");
 });
 
 app.get("/contact", (req, res) => {
@@ -108,20 +108,31 @@ app.get("/blogs/create", (req, res) => {
   });
 });
 
-app.get('/blogs/:id', async (req, res, next) => {
+app.post("/blogs/:id/delete", async (req, res, next) => {
   try {
     let id = req.params.id;
-    let blog = await Blog.findById("6a95b09809443b3d8240dbc8");
-    // res.json(blog);
-    res.render('blogs/show', {
-      blog,
-      title: 'Blog details',
-    })
-  }catch(e){
+    let blog = await Blog.findByIdAndDelete(id);
+    res.redirect('/');
+  } catch (e) {
     console.log(e);
-    next()
+    next();
   }
-  });
+});
+
+app.get("/blogs/:id", async (req, res, next) => {
+  try {
+    let id = req.params.id;
+    let blog = await Blog.findById(id);
+    // res.json(blog);
+    res.render("blogs/show", {
+      blog,
+      title: "Blog details",
+    });
+  } catch (e) {
+    console.log(e);
+    next();
+  }
+});
 
 //Redirect
 app.get("/contact-us", (req, res) => {
