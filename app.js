@@ -7,7 +7,7 @@ const expressLayouts = require("express-ejs-layouts");
 const Blog = require("./models/Blog");
 const app = express();
 
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 
 app.set("views", "./views"); //middleware
 app.set("view engine", "ejs"); //middleware
@@ -77,7 +77,7 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/blogs", async (req, res) => {
-  let {title, intro, body} = req.body;
+  let { title, intro, body } = req.body;
 
   let blog = new Blog({
     title,
@@ -108,14 +108,19 @@ app.get("/blogs/create", (req, res) => {
   });
 });
 
-app.get('/blogs/:id', async (req, res) => {
-  let id = req.params.id;
-  let blog = await Blog.findById("6a95b09809443b3d8240dbc8");
-  // res.json(blog);
-  res.render('blogs/show',{
-  blog,
-  title : 'Blog details',
-  })
+app.get('/blogs/:id', async (req, res, next) => {
+  try {
+    let id = req.params.id;
+    let blog = await Blog.findById("6a95b09809443b3d8240dbc8");
+    // res.json(blog);
+    res.render('blogs/show', {
+      blog,
+      title: 'Blog details',
+    })
+  }catch(e){
+    console.log(e);
+    next()
+  }
   });
 
 //Redirect
