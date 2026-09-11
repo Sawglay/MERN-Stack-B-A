@@ -112,7 +112,7 @@ app.post("/blogs/:id/delete", async (req, res, next) => {
   try {
     let id = req.params.id;
     let blog = await Blog.findByIdAndDelete(id);
-    res.redirect('/');
+    res.redirect('/')
   } catch (e) {
     console.log(e);
     next();
