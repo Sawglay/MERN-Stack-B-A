@@ -1,4 +1,8 @@
-app.get("/blogs", async (req, res) => {
+const express = require('express');
+
+const router = express.Router();
+
+router.get("/blogs", async (req, res) => {
   // let blogs = [
   //   {title : 'Blog Title 1', intro : 'This is blog intro 1'},
   //   {title : 'Blog Title 2', intro : 'This is blog intro 2'},
@@ -13,7 +17,7 @@ app.get("/blogs", async (req, res) => {
   });
 });
 
-app.post("/blogs", async (req, res) => {
+router.post("/blogs", async (req, res) => {
   let { title, intro, body } = req.body;
 
   let blog = new Blog({
