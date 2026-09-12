@@ -62,6 +62,10 @@ mongoose.connect(mongoURL).then(() => {
 });
 
 app.get("/", async (req, res) => {
+  res.redirect("/blogs");
+});
+
+app.get("/", async (req, res) => {
   // let blogs = [
   //   {title : 'Blog Title 1', intro : 'This is blog intro 1'},
   //   {title : 'Blog Title 2', intro : 'This is blog intro 2'},
@@ -112,7 +116,7 @@ app.post("/blogs/:id/delete", async (req, res, next) => {
   try {
     let id = req.params.id;
     let blog = await Blog.findByIdAndDelete(id);
-    res.redirect('/')
+    res.redirect("/");
   } catch (e) {
     console.log(e);
     next();
