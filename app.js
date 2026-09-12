@@ -65,7 +65,7 @@ app.get("/", async (req, res) => {
   res.redirect("/blogs");
 });
 
-app.get("/", async (req, res) => {
+app.get("/blogs", async (req, res) => {
   // let blogs = [
   //   {title : 'Blog Title 1', intro : 'This is blog intro 1'},
   //   {title : 'Blog Title 2', intro : 'This is blog intro 2'},
